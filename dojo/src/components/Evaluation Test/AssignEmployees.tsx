@@ -126,12 +126,7 @@ const AssignEmployees: React.FC = () => {
       .catch(() => setMessage('Failed to load question papers'));
   }, []);
 
-  // Display navigation context info
-  useEffect(() => {
-    if (fromNavigation) {
-      setMessage(`Skill and level pre-filled from navigation context. Skill: ${locationState?.skillName || 'Unknown'}, Level: ${locationState?.levelName || 'Unknown'}`);
-    }
-  }, [fromNavigation, locationState]);
+
 
   const handleAddRemote = () => {
     const trimmed = newRemote.trim();
