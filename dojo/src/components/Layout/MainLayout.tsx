@@ -3,7 +3,6 @@ import Nav from "../HomeNav/nav";
 import { useEffect, useState } from "react";
 import ScrollToTop from "../General/ScrollToTop";
 
-
 interface CompanyLogo {
 	id: number;
 	name: string;
@@ -14,7 +13,7 @@ interface CompanyLogo {
 type SizeOption = "small" | "medium" | "large";
 
 interface MainLayoutProps {
-	size?: SizeOption; // Optional prop
+	size?: SizeOption;
 }
 
 const MainLayout = ({ size = "medium" }: MainLayoutProps) => {
@@ -31,7 +30,7 @@ const MainLayout = ({ size = "medium" }: MainLayoutProps) => {
 				if (data && data.logo_url) {
 					setCompanyLogo({
 						id: 1,
-						name: "NL Technologies",
+						name: "Motherson",
 						logo: data.logo_url,
 						uploaded_at: "",
 					});
@@ -46,98 +45,66 @@ const MainLayout = ({ size = "medium" }: MainLayoutProps) => {
 		fetchCompanyLogo();
 	}, []);
 
-	// Define dynamic class based on size
 	const sizeClasses = {
 		small: "text-sm px-2 py-1",
-		// medium: "text-base px-4 py-2",
 		medium: "text-base",
 		large: "text-lg px-6 py-4",
 	};
 
 	return (
-		<div className={`min-h-screen flex flex-col ${sizeClasses[size]}`}>
+		<div className={`min-h-screen flex flex-col bg-white ${sizeClasses[size]}`}>
 			<Nav />
-
-			{/* Scroll to top on page change */}
 			<ScrollToTop />
-
-			<div className='pt-16 flex-grow'>
+			
+			<div className='pt-20 flex-grow'>
 				<Outlet />
 			</div>
 
-			{/* <footer className="flex justify-between items-center text-sm text-[#1E3A46] bg-gray-300">
-				<div className='flex justify-center md:justify-start mb-4 md:mb-0 pl-16'>
-					{logoLoading ? (
-						<div className='h-10 w-auto bg-gray-200 rounded animate-pulse'></div>
-					) : companyLogo ? (
-						<img
-							src={companyLogo.logo}
-							alt={companyLogo.name}
-							className='h-20 w-auto max-w-[200px] object-contain'
-						/>
-					) : (
-						<div className='text-2xl font-semibold'>
-							NL Technologies
-						</div>
-					)}
+			{/* Premium Footer */}
+			<footer className='relative bg-gradient-to-r from-[#001A4D] via-[#002A75] to-[#003DA5] text-white overflow-hidden'>
+				{/* Background Pattern */}
+				<div className="absolute inset-0 opacity-5">
+					<div className="absolute inset-0" style={{
+						backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
+					}} />
 				</div>
 
-				<span className="text-[#1E3A46] font-semibold text-center text-xl">
-					Empowering Industrial Excellence Through Digital Transformation
-				</span>
-
-				<span>
-					© 2025{' '}
-					<a
-						href="http://www.nltecsolutions.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-[#1E3A46] hover:underline font-medium"
-					>
-						NL Technologies
-					</a>. All rights reserved.
-				</span>
-			</footer> */}
-
-			<footer className='bg-white text-[#1E3A46] text-sm '>
-				<div className='flex flex-col md:flex-row justify-between items-center px-4 md:px-16 space-y-4 md:space-y-0'>
-					{/* Logo or Loading or Text */}
-					<div className='flex justify-center md:justify-start w-full md:w-auto'>
-						{logoLoading ? (
-							<div className='h-10 w-40 bg-gray-200 rounded animate-pulse'></div>
-						) : companyLogo ? (
-							<img
-								src={companyLogo.logo}
-								alt={companyLogo.name}
-								className='h-20 w-auto max-w-[200px] object-contain'
-							/>
-						) : (
-							<div className='text-2xl font-semibold'>
-								NL Technologies
+				{/* Bottom Bar */}
+				<div className='relative border-t border-white/10 bg-black/20'>
+					<div className='px-6 md:px-12 lg:px-20 py-4'>
+						<div className='max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4'>
+							<div className='text-sm text-white/60 text-center md:text-left'>
+								© 2025{' '}
+								<a
+									href='https://www.motherson.com/'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='text-white/80 hover:text-white transition-colors duration-200 font-medium'
+								>
+									NL Technologies
+								</a>
+								. All rights reserved.
 							</div>
-						)}
-					</div>
-
-					{/* Tagline */}
-					<div className='text-center text-[#1E3A46] text-sm  font-semibold w-full md:w-auto'>
-						Empowering Industrial Excellence Through Digital
-						Transformation
-					</div>
-
-					{/* Copyright */}
-					<div className='text-center w-full md:w-auto text-sm font-semibold'>
-						© 2025{" "}
-						<a
-							href='http://www.nltecsolutions.com/'
-							target='_blank'
-							rel='noopener noreferrer'
-							className='text-[#1E3A46] hover:underline font-medium'
-						>
-							NL Technologies
-						</a>
-						. All rights reserved.
+							
+							<div className='flex items-center gap-6 text-sm'>
+								<a href='#' className='text-white/60 hover:text-white transition-colors duration-200'>
+									Privacy Policy
+								</a>
+								<span className='text-white/40'>•</span>
+								<a href='#' className='text-white/60 hover:text-white transition-colors duration-200'>
+									Terms of Service
+								</a>
+								<span className='text-white/40'>•</span>
+								<a href='#' className='text-white/60 hover:text-white transition-colors duration-200'>
+									Cookie Policy
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
+
+				{/* Accent Line */}
+				<div className='h-1 bg-gradient-to-r from-[#E31E24] via-[#FF6B6B] to-[#E31E24]' />
 			</footer>
 		</div>
 	);

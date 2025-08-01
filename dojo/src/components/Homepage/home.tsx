@@ -1,45 +1,3 @@
-// import React from 'react';
-// import Tile from './Tile';
-// import { tiles } from './tileData';
-
-// const Home: React.FC = () => {
-//   return (
-//     <div className="min-h-screen bg-gray-50">
-//       <main className="pb-6">
-//         {/* Header Section */}
-//         <div className="bg-[#001740] text-white text-center py-4 md:py-6 px-4 mb-6">
-//           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-2">
-//             Digital Operations Excellence
-//           </h1>
-//           <h3 className="text-sm md:text-md font-semibold italic">
-//             Empowering Industrial Excellence Through Digital Transformation
-//           </h3>
-//         </div>
-
-//         {/* Tiles Section - always 2 columns for links */}
-//         <div className="px-4 sm:px-6 lg:px-8 xl:px-24">
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 w-full max-w-[1800px] mx-auto">
-//             {tiles.map(tile => (
-//               <Tile
-//                 key={tile.title}
-//                 title={tile.title}
-//                 links={tile.links}
-//                 icon={tile.icon}
-//                 iconBgColor={tile.iconBgColor}
-//                 iconColor={tile.iconColor}
-//                 statusText={tile.statusText}  
-//                 borderTopColor={tile.borderTopColor}
-//               />
-//             ))}
-//           </div>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import React, { useState, useEffect } from "react";
 import Nav from "../HomeNav/nav";
 import Tile from "./Tile";
@@ -77,53 +35,56 @@ const Home: React.FC = () => {
     
     // Trigger header animation after a small delay
     setTimeout(() => setAnimateHeader(true), 100);
-    
-    // Add scroll event listener for parallax effect
-    const handleScroll = () => {
-      const header = document.getElementById('header-section');
-      if (header) {
-        const scrollPosition = window.scrollY;
-        header.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Nav />
-      <main className="pt-1 pb-12 flex-grow w-full">
-        {/* Header Section with improved design */}
-        <div 
-          id="header-section"
-          className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white mb-12 shadow-xl"
-        >
-          {/* Background pattern overlay */}
-          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0wLTE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMTcgMTdjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0wLTE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMTcgMTdjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0wLTE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMTcgMTdjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0wLTE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnpNMTkgNTFjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0wLTE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMC0xN2MwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6bTE3IDE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMC0xN2MwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6bTE3IDE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMC0xN2MwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6bTE3IDE3YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMC0xN2MwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6TTE5IDY4YzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnptMTcgMGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6bTE3IDBjMCAxLjEtLjkgMi0yIDJzLTItLjktMi0yIC45LTIgMi0yIDIgLjkgMiAyem0xNyAwYzAgMS4xLS45IDItMiAycy0yLS45LTItMiAuOS0yIDItMiAyIC45IDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==')]"></div>
-          
-          {/* Accent line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
-          
-          <div className={`relative py-16  flex flex-col items-center justify-center transition-all duration-1000 ease-out ${animateHeader ? 'opacity-100' : 'opacity-0 transform translate-y-4'}`}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center tracking-tight">
-              Digital Operations Excellence
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-4 transition-all duration-700 ease-in-out"></div>
-            <h2 className="text-xl md:text-2xl font-medium mb-2 text-gray-200 tracking-wide">
-              Skill Development Platform
-            </h2>
+      <main className=" pb-12 flex-grow w-full">
+        {/* Hero Section with Premium Design */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#003DA5] via-[#002A75] to-[#001A4D] mb-16">
+          {/* Animated Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }} />
+          </div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#001A4D]/50 to-transparent" />
+
+          {/* Content */}
+          <div className={`relative py-20 px-6 transition-all duration-1000 ease-out ${animateHeader ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="max-w-7xl mx-auto text-center">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                Digital Operations Excellence
+              </h1>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-1 w-24 bg-gradient-to-r from-transparent to-[#E31E24]" />
+                <div className="h-2 w-2 bg-[#E31E24] rounded-full" />
+                <div className="h-1 w-24 bg-gradient-to-l from-transparent to-[#E31E24]" />
+              </div>
+              <p className="text-xl md:text-2xl text-white/90 font-light">
+                Empowering Skills, Driving Innovation
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Wave */}
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+            </svg>
           </div>
         </div>
 
-        {/* Tiles Section - enhanced with staggered animations */}
-        <div className="px-4 sm:px-8 lg:px-12 xl:px-24 max-w-8xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        {/* Tiles Grid with Enhanced Styling */}
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {tiles.map((tile, index) => (
               <div 
                 key={tile.title}
-                className="tile-animation"
+                className="transform transition-all duration-500 ease-out"
                 style={{ 
                   opacity: 0,
                   animation: 'fadeInUp 0.6s ease-out forwards',
@@ -144,13 +105,12 @@ const Home: React.FC = () => {
         </div>
       </main>
       
-      
       {/* Animation keyframes */}
       <style jsx>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
           }
           to {
             opacity: 1;
