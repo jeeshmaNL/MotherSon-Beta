@@ -79,7 +79,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Tiles Grid with Enhanced Styling */}
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-8xl mx-auto px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {tiles.map((tile, index) => (
               <div 
